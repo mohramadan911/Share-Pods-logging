@@ -26,8 +26,9 @@ We can use any playground hosted in KateKoda , CloudGuru for creating and launch
 # Detailed Step-By-Step
 1. Install VMware with linux image from https://ubuntu.com/download/desktop
 2. install curl 
- sudo apt update && sudo apt upgrade
- sudo apt install curl
+    
+       sudo apt update && sudo apt upgrade
+       sudo apt install curl
  
 3. Setting up a new cluster is to install a Dockeer container runtime.
 
