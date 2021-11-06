@@ -140,6 +140,14 @@ Now please run :
 We can can list the all pod labels using this command.
     
     kubectl get pods --show-labels
+    
+OR, We can also use the label selector to filter the required pods.
+    
+    kubectl get pods -l team=blue-team
+    
+
+    
+    
 
 
 
