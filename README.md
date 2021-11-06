@@ -129,7 +129,7 @@ You can run the below command to describe the deployment and check if any issue 
     kubectl get deployments
     kubectl describe deployment **deployment_name**
     
-let's assue we want to scale the Deployment Down to 2 Replicas or change any label in yml , we will follow the below :
+let's assume we want to scale the Deployment Down to 2 Replicas or change any label in yml , we will follow the below :
 vi deployment.yml
 Change the number of replicas to 2
                         
@@ -154,6 +154,13 @@ We can can list the all pod labels using this command.
 OR, We can also use the label selector to filter the required pods.
     
     kubectl get pods -l team=blue-team
+    
+    
+# Microservice Archtectiure
+Please refer to Micoservice-Readme
+
+#Build The Docker Image
+1. 
     
 
     
