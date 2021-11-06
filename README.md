@@ -7,9 +7,9 @@ Microservice role as a monitor agent based on Kubernetes-Python client to list a
 > pod start time shall not exceed 7 days
 
 # Installation
-You can use any playground hosted in KateKoda , CloudGuru for creating and launching a kubernetes cluster , Typically you can install it also on single VM operated by Linux Ubuntu which I have used in this scenerio
+We can use any playground hosted in KateKoda , CloudGuru for creating and launching a kubernetes cluster , Typically you can install it also on single VM operated by Linux Ubuntu which I have used in this scenerio
 
-# Components
+# Kubernetes Components
 ----In-Scope-----
 Docker Coumminty Image
 kuebctl , kubelet , kubeadmin
@@ -18,11 +18,11 @@ one deployment 2 share pods
 flannel
 python-client kubernetes lib
 ----Out-Scope----
-vmware
+vmware workstation
 linux ubuntu-latest
 
 # Kubernetes Cluster Architecture
-1 Master node with 1 nginx pod
+1 VM Master node with 4 nginx-app pod (different image_prefix)
 
 # Detailed Step-By-Step
 1. Install VMware with linux image from https://ubuntu.com/download/desktop
@@ -62,7 +62,7 @@ sudo apt-get install -y kubelet=1.15.7-00 kubeadm=1.15.7-00 kubectl=1.15.7-00
 
 Stop updating the Kubernetes components by running : 
 
-sudo apt-mark hold kubelet kubeadm kubectl
+   sudo apt-mark hold kubelet kubeadm kubectl
 
 Run the following to check your installation : kubeadm version
 
@@ -99,19 +99,29 @@ Run the following to check your installation : kubeadm version
     Since flannel is a system pod kube , we will run the following cmd , as no custom pod has been provisioned yet
     kubectl get pods -n kube-system
     
-Now we will run one deployment.yml for creating our ngnix pods
+Now we will run two (deployment.yml & deplyment2.yml) for creating our ngnix pods and share pods
 
 kubectl create -f deployment.yml (This will create number **Share** deplyment of 2 replica-pods with image_prefix=bitnami ,team=blue-team)
 kubectl create -f deployment2.yml (This will create number **nignix** deplyment of 2 replica-pods with image_prefix=nginx ,team=red-team)
 
 
-You can run the below command to describe the deployment and check if any issue 
+You can run the below command to describe the deployment and check if any issue :
 
-(**Note** I faced an issue with pods status as it was showen pending , after drilling down i found out that I need to remove the taint from master node so i followed this work around by running this command : 
+kubectl get deployments
+kubectl describe deployment deployment_name
 
-kubectl taint nodes  mildevkub020 node-role.kubernetes.io/master-)
+(**Note** I faced an issue with pods status as it was showen pending , after drilling down i found out that I need to remove the taint from master node so i followed a work around by running this command : 
 
-Now please run : kubectl get pods --------- it should shows two nginx pods with Running status
+kubectl taint nodes ubuntu node-role.kubernetes.io/master-)
+
+Now please run : 
+
+kubectl get pods --------- it should shows 2 nginx pods and 2 share pods with Running status
+
+we can can list the all pod labels using this command.
+kubectl get pods --show-labels
+
+
 
     
     
