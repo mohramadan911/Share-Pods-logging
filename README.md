@@ -11,18 +11,14 @@ We can use any playground hosted in KateKoda , CloudGuru for creating and launch
 
 # Kubernetes Components
 
-----In-Scope-----
-Docker Coumminty Image
-kuebctl , kubelet , kubeadmin
-one deployment 2 nginx pods
-one deployment 2 share pods
-flannel
-python-client kubernetes lib
-
-
-----Out-Scope----
-vmware workstation
-linux ubuntu-latest
+- Docker Coumminty Imagث
+- kuebctl , kubelet , kubeadmin
+- one deployment 2 nginx pods
+- one deployment 2 share pods
+- flannel
+- python-client kubernetes lib
+- vmware workstatioر
+- linux ubuntu-latest
 
 # Kubernetes Cluster Architecture
 1 VM Master node with 4 nginx-app pod (different image_prefix)
