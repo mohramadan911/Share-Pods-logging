@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bitnami
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+        image_prefix: bitnami
+        team: blue-team
+    spec:
+      containers:
+      - name: bitnami
+        image: nginx:1.15.4
+        ports:
+        - containerPort: 80
