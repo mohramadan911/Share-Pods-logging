@@ -11,10 +11,11 @@ We can use any playground hosted in KateKoda , CloudGuru for creating and launch
 
 # Kubernetes Components
 
-- Docker Coumminty Imagث
+- Docker Coumminty Image
 - kuebctl , kubelet , kubeadmin
 - one deployment 2 nginx pods
 - one deployment 2 share pods
+- one deployment 2 cassandera pods
 - flannel
 - python-client kubernetes lib
 - vmware workstatioر
