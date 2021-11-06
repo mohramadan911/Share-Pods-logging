@@ -1,15 +1,23 @@
 # Share-Challange
-Python client to list all Bitnami-pods status working under Kubernetes cluster , The main purpose is to launch a microservice url for displaying json format.
+Microservice role as a monitor agent based on Kubernetes-Python client to list all Bitnami-pods status working under Kubernetes cluster , The main purpose is to launch a microservice url for displaying json format with filtering monitoring results to include specific rules :
+
+
+> image_prefix = bitnami
+> pod team label = blue_team
+> pod start time shall not exceed 7 days
 
 # Installation
 You can use any playground hosted in KateKoda , CloudGuru for creating and launching a kubernetes cluster , Typically you can install it also on single VM operated by Linux Ubuntu which I have used in this scenerio
 
 # Components
+----In-Scope-----
 Docker Coumminty Image
 kuebctl , kubelet , kubeadmin
-nginx pod
+one deployment 2 nginx pods
+one deployment 2 share pods
 flannel
 python-client kubernetes lib
+----Out-Scope----
 vmware
 linux ubuntu-latest
 
@@ -93,7 +101,9 @@ Run the following to check your installation : kubeadm version
     
 Now we will run one deployment.yml for creating our ngnix pods
 
-kubectl create -f deployment.yml
+kubectl create -f deployment.yml (This will create number **Share** deplyment of 2 replica-pods with image_prefix=bitnami ,team=blue-team)
+kubectl create -f deployment2.yml (This will create number **nignix** deplyment of 2 replica-pods with image_prefix=nginx ,team=red-team)
+
 
 You can run the below command to describe the deployment and check if any issue 
 
