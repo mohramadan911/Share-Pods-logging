@@ -119,7 +119,7 @@ Run the following to check your installation :
     
 Now we will run two (deployment.yml & deplyment2.yml) for creating our ngnix pods and share pods
 
-     kubectl create -f deployment.yml (This will create number **Share** deplyment of 2 replica-pods with image_prefix=bitnami ,team=blue-team)
+    kubectl create -f deployment.yml (This will create number **Share** deplyment of 2 replica-pods with image_prefix=bitnami ,team=blue-team)
     kubectl create -f deployment2.yml (This will create number **nignix** deplyment of 2 replica-pods with image_prefix=nginx ,team=red-team)
 
 
@@ -127,6 +127,16 @@ You can run the below command to describe the deployment and check if any issue 
 
     kubectl get deployments
     kubectl describe deployment **deployment_name**
+    
+let's assue we want to scale the Deployment Down to 2 Replicas or change any label in yml , we will follow the below :
+vi deployment.yml
+Change the number of replicas to 2
+                        
+    spec:
+    replicas: 2
+Apply the changes:
+
+    kubectl apply -f deployment.yml
 
 (**Note** we can face an issue with pods status as it may show pending , after drilling down found out that I need to remove the taint from master node so we can follow a work around by running this command): 
 
