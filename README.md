@@ -71,6 +71,11 @@ Run the following to check your installation : kubeadm version
     kubectl get pods -n kube-system
     
 Now we will run one deployment.yml for creating our ngnix pods
+kubectl create -f deployment.yml
+you can run the below command to describe the deployment and check if any issue 
+(**Note** I faced an issue with pods status as it was showen pending , after drilling down i found out that I need to remove the taint from master node so i followed this work around by running this command : kubectl taint nodes  mildevkub020 node-role.kubernetes.io/master-
+
+Now please run : kubectl get pods --------- it should shows two nginx pods with Running status
 
     
     
