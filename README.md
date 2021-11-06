@@ -1,9 +1,9 @@
 # Share-Challange
-Microservice role as a monitor agent based on Kubernetes-Python client to list all Bitnami-pods status working under Kubernetes cluster , The main purpose is to launch a microservice url for displaying json format with filtering monitoring results to include specific rules :
+Microservice role as a monitor agent based on Kubernetes-Python client to list all Bitnami-pods status working under Kubernetes cluster , The main purpose is to stand-out log for displaying json format with filtering monitoring results to include specific rules :
 
 
 > image_prefix = bitnami
-> pod team label = blue_team
+> pod team label = team
 > pod start time shall not exceed 7 days
 
 # Installation
