@@ -18,13 +18,13 @@ We can use any playground hosted in KateKoda , CloudGuru for creating and launch
 - one deployment 2 cassandera pods
 - flannel
 - python-client kubernetes lib
-- vmware workstatioر
+- vmware workstation
 - linux ubuntu-latest
 
 # Kubernetes Cluster Architecture
-1 VM Master node with 4 nginx-app pod (different image_prefix)
+1 VM Master node with 4 nginx-app pod and 2 bitnami/cassandera pods
 
-# Detailed Step-By-Step
+# How we can build it locally
 1. Install VMware with linux image from https://ubuntu.com/download/desktop
 2. install curl 
     
@@ -156,12 +156,27 @@ OR, We can also use the label selector to filter the required pods.
     kubectl get pods -l team=blue-team
     
     
-# Microservice Archtectiure
-Please refer to Micoservice-Readme
+# Python Microservice logical context
+Please refer to Py-Micoservice-Readme
 
-#Build The Docker Image
-1. 
-    
+# Build The Docker Image
+1. create a txt file with name Dockerfile (Make sure of your working directory, it should be in the same share.py dir)
+2. Inside the Dockerfile we will start by first taking the python base image from docker hub. A tag latest is used to get the latest official python image.
+3. After you have created both the Python script and the Dockerfile, you can now use the Docker build command to build your Docker Image, we will run :
+
+        sudo docker build -t share-pods-log
+        
+4. Verify the image build (share image with tag listed shall be presented 1st one)
+
+        sudo docker images
+        
+
+        
+5. Running the Docker Container
+
+        docker run share-pods-log
+        
+        
 
     
     
