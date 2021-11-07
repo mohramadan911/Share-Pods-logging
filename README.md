@@ -159,7 +159,15 @@ OR, We can also use the label selector to filter the required pods.
 # Python Microservice logical context
 Please refer to Py-Micoservice-Readme
 
-# Build The Docker Image
+
+# Test code locally
+Open terminal , Run 
+
+        sudo python3 share.py
+        
+ A formated json log should printed-out with specfic set rules
+
+# Build share-pods-log Docker Image
 1. create a txt file with name Dockerfile (Make sure of your working directory, it should be in the same share.py dir)
 2. Inside the Dockerfile we will start by first taking the python base image from docker hub. A tag latest is used to get the latest official python image.
 3. After you have created both the Python script and the Dockerfile, you can now use the Docker build command to build your Docker Image, we will run :
@@ -171,7 +179,6 @@ Please refer to Py-Micoservice-Readme
         sudo docker images
         
 
-        
 5. Running the Docker Container
 
         docker run share-pods-log
