@@ -78,7 +78,7 @@ Run the following to check your installation :
 
 **NOTE** I faced another issue to disable swap , swap is not required but can be used with another kubernetes processes , Anyhow I didn't require it so you can run the following to fix thee issue : 
  
-    sudo swapoff -a
+           sudo swapoff -a
   
   Refeerence : https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.8.md#before-upgrading
 
@@ -86,7 +86,7 @@ Run the following to check your installation :
   On the Kube master node, initialize the cluster:
   (it might take one minute or two minutes based on your internet connection)
   
-    sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+            sudo kubeadm init --pod-network-cidr=10.244.0.0/16
     
  (**Note** The kubeadm init command should output a kubeadm join command containing a token and hash. Copy that command and run it with sudo on both worker                       nodes. It should look something like this:
     
