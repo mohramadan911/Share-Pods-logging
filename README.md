@@ -83,9 +83,11 @@ Run the following to check your installation :
   Refeerence : https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.8.md#before-upgrading
 
 5. Bootstrap the cluster on the Kube master node.
-  On the Kube master node, initialize the cluster:(it might take one minute or two minutes based on your internet connection)
+  On the Kube master node, initialize the cluster:
+  (it might take one minute or two minutes based on your internet connection)
   
     sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+    
  (**Note** The kubeadm init command should output a kubeadm join command containing a token and hash. Copy that command and run it with sudo on both worker                       nodes. It should look something like this:
     
                           sudo kubeadm join $some_ip:6443 --token $some_token --discovery-token-ca-cert-hash $some_hash
