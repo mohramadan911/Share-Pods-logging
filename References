@@ -1,8 +1,5 @@
-https://stackoverflow.com/questions/56124320/how-to-get-log-and-describe-of-pods-in-kubernetes-by-python-client/56128463
-https://github.com/kubernetes-client/python
 https://devcentral.f5.com/s/articles/Exploring-Kubernetes-API-using-Wireshark-part-3-Python-Client-API
-https://stackoverflow.com/questions/59484509/node-had-taints-that-the-pod-didnt-tolerate-error-when-deploying-to-kubernetes
-https://www.geeksforgeeks.org/how-to-run-a-python-script-using-docker/
-https://assistanz.com/steps-to-create-a-pod-with-labels-using-kubectl-and-yaml/
-https://github.com/bitnami/bitnami-docker-cassandra/blob/master/docker-compose.yml
-https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d
+Kube python-client https://stackoverflow.com/questions/56124320/how-to-get-log-and-describe-of-pods-in-kubernetes-by-python-client/56128463
+https://github.com/kubernetes-client/python
+pod issue : https://stackoverflow.com/questions/59484509/node-had-taints-that-the-pod-didnt-tolerate-error-when-deploying-to-kubernetes
+bitnami-cassandera yaml image https://github.com/bitnami/bitnami-docker-cassandra/blob/master/docker-compose.yml
