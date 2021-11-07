@@ -5,3 +5,4 @@ https://stackoverflow.com/questions/59484509/node-had-taints-that-the-pod-didnt-
 https://www.geeksforgeeks.org/how-to-run-a-python-script-using-docker/
 https://assistanz.com/steps-to-create-a-pod-with-labels-using-kubectl-and-yaml/
 https://github.com/bitnami/bitnami-docker-cassandra/blob/master/docker-compose.yml
+https://medium.com/swlh/how-to-run-locally-built-docker-images-in-kubernetes-b28fbc32cc1d
