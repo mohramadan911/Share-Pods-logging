@@ -160,7 +160,23 @@ OR, We can also use the label selector to filter the required pods.
     
     
 # Python Microservice logical context
-Please refer to Py-Micoservice-Readme
+
+share.py python file for getting pods logs in a json format
+
+**config**
+
+    cmd.py python file for kubectl commands
+    config.py python file for microservice configurations
+
+**funcs**
+
+    functions.py microsservice methods
+    helpers.py helpers method
+    
+ **temp**
+ 
+    folder to maintain output from stdout commands
+    
 
 
 # Test code locally
