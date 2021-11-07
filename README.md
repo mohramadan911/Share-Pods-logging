@@ -7,7 +7,7 @@ Microservice role as a monitor agent based on Kubernetes-Python client to list a
 > pod start time shall not exceed 7 days
 
 # Installation
-We can use any playground hosted in KateKoda , CloudGuru for creating and launching a kubernetes cluster , Typically you can install it also on single VM operated by Linux Ubuntu which I have used in this scenerio
+We can use any playground hosted in KateKoda for creating and launching a kubernetes cluster , Typically you can install it also on single VM operated by Linux Ubuntu which I have used in this scenerio
 
 # Kubernetes Components
 
@@ -16,13 +16,14 @@ We can use any playground hosted in KateKoda , CloudGuru for creating and launch
 - one deployment 2 nginx pods
 - one deployment 2 share pods
 - one deployment 2 cassandera pods
+- one deployment 1 discovery pod "discovery Microservice"
 - flannel
 - python-client kubernetes lib
 - vmware workstation
 - linux ubuntu-latest
 
 # Kubernetes Cluster Architecture
-1 VM Master node with 4 nginx-app pod and 2 bitnami/cassandera pods
+1 VM Master node with 8 pods
 
 # How we can build it locally
 1. Install VMware with linux image from https://ubuntu.com/download/desktop
@@ -168,6 +169,7 @@ Open terminal , Run
  A formated json log should printed-out with specfic set rules
 
 # Build local share-pods-log Docker Image
+
 1. create a txt file with name Dockerfile (Make sure of your working directory, it should be in the same share.py dir)
 2. Inside the Dockerfile we will start by first taking the python base image from docker hub. A tag latest is used to get the latest official python image.
 3. After you have created both the Python script and the Dockerfile, you can now use the Docker build command to build your Docker Image, we will run :
@@ -178,7 +180,6 @@ Open terminal , Run
 
         sudo docker images
         
-
 5. Running the Docker Container
 
         kubectl run discovery --image=share-pods-log:latest --image-pull-policy=Never
@@ -191,7 +192,6 @@ Open terminal , Run
 
         kubectl create clusterrole logs-reader --verb=get,list --resource=pods,services,namespaces,deployments,jobs
 
-
 8. Create ClusterRoleBinding "logs-reader-binding"
 
         kubectl create clusterrolebinding logs-reader-binding  --clusterrole=logs-reader --serviceaccount=default
@@ -199,15 +199,14 @@ Open terminal , Run
 9. Access pod shell
 
         kubectl exec -it discovery-78c76cfbc4-59fgv  -- /bin/bash 
-        
-        
+         
 # Running Py
 
         python3 share.py
         
-# Screenshots
+# screenshots
 
-  ./Screeenshots
+  ./screeenshots
   
   
 
