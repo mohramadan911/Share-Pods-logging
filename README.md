@@ -167,12 +167,12 @@ Open terminal , Run
         
  A formated json log should printed-out with specfic set rules
 
-# Build share-pods-log Docker Image
+# Build local share-pods-log Docker Image
 1. create a txt file with name Dockerfile (Make sure of your working directory, it should be in the same share.py dir)
 2. Inside the Dockerfile we will start by first taking the python base image from docker hub. A tag latest is used to get the latest official python image.
 3. After you have created both the Python script and the Dockerfile, you can now use the Docker build command to build your Docker Image, we will run :
 
-        sudo docker build -t share-pods-log
+        sudo docker build -t share-pods-log .
         
 4. Verify the image build (share image with tag listed shall be presented 1st one)
 
@@ -181,7 +181,39 @@ Open terminal , Run
 
 5. Running the Docker Container
 
-        docker run share-pods-log
+        kubectl run discovery --image=share-pods-log:latest --image-pull-policy=Never
+        
+6. Get pods to verify Python pod (namespace = default)
+        
+        kubectl get pods
+        
+7. Create cluster Role “logs-reader”
+
+        kubectl create clusterrole logs-reader --verb=get,list --resource=pods,services,namespaces,deployments,jobs
+
+
+8. Create ClusterRoleBinding "logs-reader-binding"
+
+        kubectl create clusterrolebinding logs-reader-binding  --clusterrole=logs-reader --serviceaccount=default
+
+9. Access pod shell
+
+        kubectl exec -it discovery-78c76cfbc4-59fgv  -- /bin/bash 
+        
+        
+# Running Py
+
+        python3 share.py
+        
+# Screenshots
+
+  ./Screeenshots
+  
+  
+
+    
+
+        
         
         
 
