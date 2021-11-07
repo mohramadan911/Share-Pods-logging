@@ -1,0 +1,46 @@
+Name:           nginx-two-deployment-9cbb5df5d-nmg59
+Namespace:      default
+Priority:       0
+Node:           ubuntu/172.16.66.3
+Start Time:     Sat, 06 Nov 2021 15:09:51 -0700
+Labels:         app=nginx-two
+                pod-template-hash=9cbb5df5d
+Annotations:    <none>
+Status:         Running
+IP:             10.244.0.25
+Controlled By:  ReplicaSet/nginx-two-deployment-9cbb5df5d
+Containers:
+  nginx-two:
+    Container ID:   docker://eeaf0899bf42fda8b46e7319a30323b95067bc7de2d84835efc1ece517343822
+    Image:          docker.io/bitnami/cassandra:4.0
+    Image ID:       docker-pullable://bitnami/cassandra@sha256:f7098bc390763ddf77d8b13abc5d011861d0741a1f8aa0787da725f2ae597316
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Sat, 06 Nov 2021 15:28:41 -0700
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Sat, 06 Nov 2021 15:19:29 -0700
+      Finished:     Sat, 06 Nov 2021 15:28:26 -0700
+    Ready:          True
+    Restart Count:  2
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-n5dfl (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-n5dfl:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-n5dfl
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:          <none>

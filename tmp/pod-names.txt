@@ -1,0 +1,7 @@
+bitnami-5d899dc774-qrbpm
+bitnami-5d899dc774-zvp9z
+nginx-deployment-5464d8df5f-9vp95
+nginx-deployment-5464d8df5f-x5hzj
+nginx-two-deployment-9cbb5df5d-9qxqc
+nginx-two-deployment-9cbb5df5d-jrdv9
+nginx-two-deployment-9cbb5df5d-nmg59

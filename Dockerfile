@@ -17,5 +17,12 @@ COPY . ./
 
 #CMD instruction should be used to run the software
 #contained by your image, along with any arguments.
-
+RUN apt update && \
+      apt install -y curl && \
+      curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl && \
+      chmod +x ./kubectl && \
+      mv ./kubectl /usr/local/bin/kubectl
+#CMD kubectl get pods
 CMD [ "python", "./share.py"]
+#In order to keep a POD running it should to be performing certain task
+CMD ["sh", "-c", "tail -f /dev/null"]

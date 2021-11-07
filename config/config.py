@@ -3,9 +3,9 @@ nameSpace = "default"
 
 
 # File Paths
-nodesFile = 'system-out/node-names.txt'
-podstmpFile = 'system-out/pod-names.txt'
-podDescFile = 'system-out/single-pod-desc.txt'
+nodesFile = 'tmp/node-names.txt'
+podstmpFile = 'tmp/pod-names.txt'
+podDescFile = 'tmp/single-pod-desc.txt'
 
 # Variables Declaration
 nodes = []
