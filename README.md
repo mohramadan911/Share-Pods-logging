@@ -1,5 +1,5 @@
 # Share-Kubernetes-python-client for cluster pods logging
-Microservice role as a monitor agent based on Kubernetes-Python client to list all Bitnami-pods status working under Kubernetes cluster , The main purpose is to stand-out log for displaying json format with filtering monitoring results to include specific rules :
+discovery Microservice role as a monitor agent based on Kubernetes-Python client to list all Bitnami-pods status working under Kubernetes cluster , The main purpose is to print-out log for displaying json format with filtering monitoring results to include specific rules :
 
 
 > image_prefix = bitnami
@@ -11,7 +11,7 @@ We can use any playground hosted in KateKoda for creating and launching a kubern
 
 # Kubernetes Components
 
-- Docker Coumminty Image
+- Docker Community Image
 - kuebctl , kubelet , kubeadmin
 - one deployment 2 nginx pods
 - one deployment 2 share pods
@@ -25,8 +25,8 @@ We can use any playground hosted in KateKoda for creating and launching a kubern
 # Kubernetes Cluster Architecture
 1 VM Master node with 8 pods
 
-# How we can build it locally
-1. Install VMware with linux image from https://ubuntu.com/download/desktop
+# How we can build & run it locally
+1. Install VMware with linux image from https://ubuntu.com/download/desktop (my vm specs was : 4 cpu core - 8 GB RAM)
 2. install curl 
     
        sudo apt update
@@ -54,7 +54,7 @@ Check docker version :
         sudo docker version
 
 4. Now that Docker is installed, we are ready to install the Kubernetes components
-Installing Kubeadm, Kubelet, and Kubectl on Master Node with thee following commands :
+Installing Kubeadm, Kubelet, and Kubectl on Master Node with the following commands :
 
     curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
     
@@ -66,7 +66,7 @@ Installing Kubeadm, Kubelet, and Kubectl on Master Node with thee following comm
 
     sudo apt-get install -y kubelet=1.15.7-00 kubeadm=1.15.7-00 kubectl=1.15.7-00 
 
-(**Note** : I faced an issue when i tried to install version 1.12.2-00 from the Kubernetes ubuntu repositories. You can work around this by using version 1.15.7-00 for kubelet, kubeadm, and kubectl )
+(**Note** : I faced a comptability issue when i tried to install version 1.12.2-00 from the Kubernetes ubuntu repositories. it got fixed by using version 1.15.7-00 for kubelet, kubeadm, and kubectl )
 
 Stop updating the Kubernetes components by running : 
 
@@ -80,7 +80,7 @@ Run the following to check your installation :
  
            sudo swapoff -a
   
-  Refeerence : https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.8.md#before-upgrading
+  Reference : https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.8.md#before-upgrading
 
 5. Bootstrap the cluster on the Kube master node.
   On the Kube master node, initialize the cluster:
@@ -121,10 +121,13 @@ Run the following to check your installation :
     
         kubectl get pods -n kube-system
     
-Now we will run two (deployment.yml & deplyment2.yml) for creating our ngnix pods and share pods
+Now we will run deployments for creating our pods
 
     kubectl create -f deployment.yml (This will create number **Share** deplyment of 2 replica-pods with image_prefix=bitnami ,team=blue-team)
     kubectl create -f deployment2.yml (This will create number **nignix** deplyment of 2 replica-pods with image_prefix=nginx ,team=red-team)
+    kubectl create -f bitnami-cassandera-deployment.yaml
+    kubectl create -f pods.yaml
+
 
 
 You can run the below command to describe the deployment and check if any issue :
@@ -132,7 +135,7 @@ You can run the below command to describe the deployment and check if any issue 
     kubectl get deployments
     kubectl describe deployment **deployment_name**
     
-let's assume we want to scale the Deployment Down to 2 Replicas or change any label in yml , we will follow the below :
+To scale the Deployment Down to 2 Replicas or change any label in yml , we will follow the below :
 vi deployment.yml
 Change the number of replicas to 2
                         
@@ -142,15 +145,15 @@ Apply the changes:
 
     kubectl apply -f deployment.yml
 
-(**Note** we can face an issue with pods status as it may show pending , after drilling down found out that I need to remove the taint from master node so we can follow a work around by running this command): 
+(**Note** there was an issue with pods status as it may show pending , after drilling down found out that I need to remove the taint from master node so it was fixed by running below command): 
 
     kubectl taint nodes ubuntu node-role.kubernetes.io/master-
 
-Now please run : 
+Now please run to verify status: 
 
-    kubectl get pods --------- it should shows 2 nginx pods and 2 share pods with Running status
+    kubectl get pods 
 
-We can can list the all pod labels using this command.
+We can can list the all pod labels by running
     
     kubectl get pods --show-labels
     
@@ -159,7 +162,7 @@ OR, We can also use the label selector to filter the required pods.
     kubectl get pods -l team=blue-team
     
     
-# Python Microservice logical context
+# discovery python microservice overview
 
 share.py python file for getting pods logs in a json format
 
@@ -184,7 +187,7 @@ Open terminal , Run
 
         sudo python3 share.py
         
- A formated json log should printed-out with specfic set rules
+ A formated json log should printed-out with required set rules
 
 # Build local share-pods-log Docker Image
 
